@@ -41,12 +41,44 @@
     </style>
     <style name="AppTheme.EpisodeDetails.Information.Time"></style>
 
+    <style name="AppTheme.EpisodeDetails.Information.Time.Clock">
+        <item name="android:layout_marginRight">9dp</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:src">@drawable/episode_details_clock</item>
+    </style>
+
+    <style name="AppTheme.EpisodeDetails.Information.Time.Date">
+        <item name="android:textColor">@color/theme_colorPrimary</item>
+        <item name="android:textSize">@dimen/default_textSize_medium</item>
+        <item name="android:layout_marginLeft">9dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="AppTheme.EpisodeDetails.Information.Time.Container" parent="CardView">
         <item name="contentPadding">@dimen/default_spacing_large</item>
         <item name="cardCornerRadius">4dp</item>
     </style>
 
     <style name="AppTheme.EpisodeDetails.Information.Summary"></style>
+
+    <style name="AppTheme.EpisodeDetails.Information.Summary.Title">
+        <item name="android:textColor">@color/default_color_third</item>
+        <item name="android:textSize">@dimen/default_textSize_verySmall</item>
+        <item name="android:layout_marginTop">0.5dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="AppTheme.EpisodeDetails.Information.Summary.Body">
+        <item name="android:textColor">@color/default_textColor_fourth</item>
+        <item name="android:textSize">@dimen/default_textSize_medium</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="AppTheme.EpisodeDetails.Information.Summary.Separator">
+        <item name="android:layout_marginTop">8.5dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">@color/default_background_third</item>
+    </style>
 
     <style name="AppTheme.EpisodeDetails.Information.Summary.Container" parent="AppTheme.EpisodeDetails.Information.Time.Container">
         <item name="android:layout_marginTop">@dimen/default_spacing_medium</item>
