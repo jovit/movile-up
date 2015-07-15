@@ -11,36 +11,27 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                style="@style/AppTheme.EpisodeDetails.Highlight"
                 android:src="@drawable/highlight_placeholder"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/overlay"/>
+                style="@style/AppTheme.EpisodeDetails.Overlay"/>
             <TextView
-                android:text="Title Placeholder"
-                android:textColor="@color/default_textColor_first"
-                android:textSize="@dimen/default_textSize_veryLarge"
-                android:layout_marginBottom="@dimen/default_spacing_large"
-                android:layout_marginLeft="@dimen/default_spacing_large"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Title Placeholder"
                 android:layout_alignParentBottom="true"
-                />
+                style="@style/AppTheme.EpisodeDetails.Title"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/default_spacing_large"
-            android:paddingLeft="@dimen/default_spacing_large"
-            android:paddingRight="@dimen/default_spacing_large"
-            android:orientation="vertical">
+            style="@style/AppTheme.EpisodeDetails.Information.Container">
 
             <android.support.v7.widget.CardView
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                card_view:contentPadding="@dimen/default_spacing_large"
-                card_view:cardCornerRadius="4dp"
+                style="@style/AppTheme.EpisodeDetails.Information.Time.Container"
                 android:layout_width="match_parent"
                 android:layout_height="64dp">
                 <LinearLayout
@@ -69,11 +60,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                card_view:contentPadding="@dimen/default_spacing_large"
-                card_view:cardCornerRadius="4dp"
-                android:layout_marginTop="@dimen/default_spacing_medium"
-                android:layout_marginBottom="@dimen/default_spacing_medium"
+                style="@style/AppTheme.EpisodeDetails.Information.Summary.Container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <LinearLayout
