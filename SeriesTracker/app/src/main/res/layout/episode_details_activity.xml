@@ -43,6 +43,7 @@
                         android:layout_height="match_parent"
                         style="@style/AppTheme.EpisodeDetails.Information.Time.Clock"/>
                     <TextView
+                        android:id="@+id/episode_details_time"
                         style="@style/AppTheme.EpisodeDetails.Information.Time.Date"
                         android:text="01/01/2015 at 00:00"
                         android:layout_width="wrap_content"

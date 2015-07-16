@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.async_task;
+package com.movile.up.seriestracker.listener;
 
 import com.movile.up.seriestracker.model.Episode;
 
@@ -6,5 +6,5 @@ import com.movile.up.seriestracker.model.Episode;
  * Created by JoaoVitorAraki on 15/07/2015.
  */
 public interface LoadEpisodeListener {
-    public void onLoadEpisodeSucces(Episode episode);
+    void onLoadEpisodeSuccess(Episode episode);
 }

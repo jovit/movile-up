@@ -7,8 +7,12 @@ import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.async_task.LoadEpisodeAsyncTask;
-import com.movile.up.seriestracker.async_task.LoadEpisodeListener;
+import com.movile.up.seriestracker.listener.LoadEpisodeListener;
 import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.util.FormatUtil;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class EpisodeDetailsActivity extends AppCompatActivity {
@@ -29,9 +33,13 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
 
         new LoadEpisodeAsyncTask(this, new LoadEpisodeListener() {
             @Override
-            public void onLoadEpisodeSucces(Episode episode) {
+            public void onLoadEpisodeSuccess(Episode episode) {
                 ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
                 ((TextView) findViewById(R.id.episode_details_summary)).setText(episode.overview());
+
+                Date date = FormatUtil.formatDate(episode.firstAired());
+                String formattedDate = FormatUtil.formatDate(date);
+                ((TextView) findViewById(R.id.episode_details_time)).setText(formattedDate);
             }
         }).execute();
 
