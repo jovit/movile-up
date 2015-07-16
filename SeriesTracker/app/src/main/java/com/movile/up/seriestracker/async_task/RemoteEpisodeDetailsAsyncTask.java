@@ -4,14 +4,14 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.movile.up.seriestracker.business.FetchLocalEpisodeDetails;
-import com.movile.up.seriestracker.listener.LoadEpisodeListener;
+import com.movile.up.seriestracker.listener.EpisodeDetailsListener;
 import com.movile.up.seriestracker.model.Episode;
 
-public class LoadEpisodeAsyncTask extends AsyncTask<Void,Void,Episode> {
+public class RemoteEpisodeDetailsAsyncTask extends AsyncTask<Void,Void,Episode> {
     private Context mContext;
-    private LoadEpisodeListener mListener;
+    private EpisodeDetailsListener mListener;
 
-    public LoadEpisodeAsyncTask(Context context, LoadEpisodeListener listener){
+    public RemoteEpisodeDetailsAsyncTask(Context context, EpisodeDetailsListener listener){
         this.mContext = context;
         this.mListener = listener;
     }
@@ -22,7 +22,7 @@ public class LoadEpisodeAsyncTask extends AsyncTask<Void,Void,Episode> {
     }
 
     protected void onPostExecute(Episode result) {
-        mListener.onLoadEpisodeSuccess(result);
+        mListener.onEpisodeLoadSuccess(result);
     }
 
 }

@@ -1,17 +1,19 @@
 package com.movile.up.seriestracker.activity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.async_task.LoadEpisodeAsyncTask;
-import com.movile.up.seriestracker.listener.LoadEpisodeListener;
+import com.movile.up.seriestracker.async_task.RemoteEpisodeDetailsAsyncTask;
+import com.movile.up.seriestracker.listener.EpisodeDetailsListener;
+import com.movile.up.seriestracker.loader.callback.EpisodeDetailsLoaderCallback;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.util.FormatUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -31,9 +33,10 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        new LoadEpisodeAsyncTask(this, new LoadEpisodeListener() {
+        getLoaderManager().initLoader(0, null, new EpisodeDetailsLoaderCallback(this,
+                new EpisodeDetailsListener() {
             @Override
-            public void onLoadEpisodeSuccess(Episode episode) {
+            public void onEpisodeLoadSuccess(Episode episode) {
                 ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
                 ((TextView) findViewById(R.id.episode_details_summary)).setText(episode.overview());
 
@@ -41,7 +44,14 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
                 String formattedDate = FormatUtil.formatDate(date);
                 ((TextView) findViewById(R.id.episode_details_time)).setText(formattedDate);
             }
-        }).execute();
+
+            @Override
+            public void onImageLoadSuccess(Bitmap image) {
+                ((ImageView) findViewById(R.id.episode_details_screenshot)).setImageBitmap(image);
+            }
+        }, "https://api-v2launch.trakt.tv/shows/game-of-thrones/seasons/1/episodes/3?extended=full,images")).forceLoad();
+
+        //new RemoteEpisodeDetailsAsyncTask(this, ).execute();
 
         Log.d(TAG, "onStart()");
     }
