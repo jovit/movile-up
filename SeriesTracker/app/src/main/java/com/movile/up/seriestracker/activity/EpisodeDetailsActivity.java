@@ -51,8 +51,6 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
             }
         }, "https://api-v2launch.trakt.tv/shows/game-of-thrones/seasons/1/episodes/3?extended=full,images")).forceLoad();
 
-        //new RemoteEpisodeDetailsAsyncTask(this, ).execute();
-
         Log.d(TAG, "onStart()");
     }
 
