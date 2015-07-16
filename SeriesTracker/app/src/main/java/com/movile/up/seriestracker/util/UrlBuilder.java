@@ -9,13 +9,12 @@ import java.text.MessageFormat;
 /**
  * Created by android on 7/16/15.
  */
-public class UrlBuilder {
+public class URLBuilder {
 
-    public static String buildEpisodeUrl(Context context, String serie, int season, int episode){
+    public static String buildEpisodeURL(Context context, String serie, int season, int episode){
         String url = context.getString(R.string.api_url_base);
-        MessageFormat.format(R.string.api_url_episode,serie, season, episode);
-        url.concat(MessageFormat.format(R.string.api_url_episode, serie, String.valueOf(season), String.valueOf(episode)));
-        url.concat(?extended=full,images);
+        url = url.concat(MessageFormat.format(context.getString(R.string.api_url_episode), serie, season, episode));
+        url = url.concat("?extended=full,images");
         return url;
     }
 }

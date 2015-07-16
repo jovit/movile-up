@@ -8,11 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.async_task.RemoteEpisodeDetailsAsyncTask;
 import com.movile.up.seriestracker.listener.EpisodeDetailsListener;
 import com.movile.up.seriestracker.loader.callback.EpisodeDetailsLoaderCallback;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.util.FormatUtil;
+import com.movile.up.seriestracker.util.URLBuilder;
 
 import java.util.Date;
 
@@ -49,7 +49,7 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
             public void onImageLoadSuccess(Bitmap image) {
                 ((ImageView) findViewById(R.id.episode_details_screenshot)).setImageBitmap(image);
             }
-        }, "https://api-v2launch.trakt.tv/shows/game-of-thrones/seasons/1/episodes/3?extended=full,images")).forceLoad();
+        }, URLBuilder.buildEpisodeURL(this, "game-of-thrones", 1, 2))).forceLoad();
 
         Log.d(TAG, "onStart()");
     }

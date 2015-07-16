@@ -57,7 +57,8 @@ public class FetchLocalEpisodeDetails {
             Log.e(TAG, "Error loading remote content", e);
         }finally {
             try {
-                reader.close();
+                if(reader != null)
+                    reader.close();
             }catch(IOException e){
                 Log.e(TAG, "Error closing reader", e);
             }
