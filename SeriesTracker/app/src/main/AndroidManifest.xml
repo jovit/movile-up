@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.movile.up.seriestracker" >
 
+    <meta-data
+        android:name="com.movile.up.seriestracker.util.GlideConfiguration"
+        android:value="GlideModule" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
 

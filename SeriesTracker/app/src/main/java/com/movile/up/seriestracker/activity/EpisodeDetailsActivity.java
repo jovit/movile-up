@@ -1,21 +1,19 @@
 package com.movile.up.seriestracker.activity;
 
-import android.graphics.Bitmap;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.listener.EpisodeDetailsListener;
-import com.movile.up.seriestracker.loader.callback.EpisodeDetailsLoaderCallback;
+import com.movile.up.seriestracker.adapter.EpisodeDetailsAdapter;
 import com.movile.up.seriestracker.model.Episode;
-import com.movile.up.seriestracker.util.FormatUtil;
-import com.movile.up.seriestracker.util.URLBuilder;
+import com.movile.up.seriestracker.remote.EpisodeRemoteService;
 
-import java.util.Date;
-
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class EpisodeDetailsActivity extends AppCompatActivity {
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
@@ -33,23 +31,23 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        getLoaderManager().initLoader(0, null, new EpisodeDetailsLoaderCallback(this,
-                new EpisodeDetailsListener() {
-            @Override
-            public void onEpisodeLoadSuccess(Episode episode) {
-                ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
-                ((TextView) findViewById(R.id.episode_details_summary)).setText(episode.overview());
+        final EpisodeDetailsAdapter mListener = new EpisodeDetailsAdapter(this);
 
-                Date date = FormatUtil.formatDate(episode.firstAired());
-                String formattedDate = FormatUtil.formatDate(date);
-                ((TextView) findViewById(R.id.episode_details_time)).setText(formattedDate);
+        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(this.getString(R.string.api_url_base)).build();
+
+        EpisodeRemoteService service = mAdapter.create(EpisodeRemoteService.class);
+
+        service.getEpisodeDetails("sherlock", (long)1, (long)1, new Callback<Episode>() {
+            @Override
+            public void success(Episode episode, Response response) {
+                mListener.onEpisodeLoadSuccess(episode);
             }
 
             @Override
-            public void onImageLoadSuccess(Bitmap image) {
-                ((ImageView) findViewById(R.id.episode_details_screenshot)).setImageBitmap(image);
+            public void failure(RetrofitError error) {
+                Log.e(TAG, "Error fetching episode", error.getCause());
             }
-        }, URLBuilder.buildEpisodeURL(this, "game-of-thrones", 1, 2))).forceLoad();
+        });
 
         Log.d(TAG, "onStart()");
     }

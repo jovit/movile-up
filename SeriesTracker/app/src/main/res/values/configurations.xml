@@ -2,7 +2,7 @@
 
     <!-- Content API -->
     <string name="api_url_base">https://api-v2launch.trakt.tv</string>
-    <string name="api_url_episode">/shows/{0}/seasons/{1}/episodes/{2}</string>
+    <string name="api_url_episode">/shows/{0}/seasons/{1}/episodes/{2}?extended=full,images</string>
     <string name="api_version">2</string>
     <string name="api_key">1bf347f94c3fe64a66b4ff5835f9bde9a2878db27498b761264cf8c658a3a136</string>
     <integer name="api_timeout_read">10000</integer>
