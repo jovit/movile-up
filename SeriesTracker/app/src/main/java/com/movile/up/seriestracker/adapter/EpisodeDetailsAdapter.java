@@ -1,6 +1,5 @@
 package com.movile.up.seriestracker.adapter;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,9 +14,6 @@ import com.movile.up.seriestracker.util.FormatUtil;
 
 import java.util.Date;
 
-/**
- * Created by android on 7/17/15.
- */
 public class EpisodeDetailsAdapter implements EpisodeDetailsListener {
     EpisodeDetailsActivity mContext;
 

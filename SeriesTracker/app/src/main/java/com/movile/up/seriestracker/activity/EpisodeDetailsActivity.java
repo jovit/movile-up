@@ -2,27 +2,49 @@ package com.movile.up.seriestracker.activity;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.adapter.EpisodeDetailsAdapter;
 import com.movile.up.seriestracker.model.Episode;
-import com.movile.up.seriestracker.remote.EpisodeRemoteService;
+import com.movile.up.seriestracker.model.Images;
+import com.movile.up.seriestracker.presenter.EpisodeDetailsPresenter;
+import com.movile.up.seriestracker.util.FormatUtil;
+import com.movile.up.seriestracker.view.EpisodeDetailsView;
 
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import java.util.Date;
 
-public class EpisodeDetailsActivity extends AppCompatActivity {
+public class EpisodeDetailsActivity extends AppCompatActivity implements EpisodeDetailsView{
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
+    private EpisodeDetailsPresenter mPresenter;
 
+    @Override
+    public void displayEpisodeDetails(Episode episode) {
+        ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
+        ((TextView) findViewById(R.id.episode_details_summary)).setText(episode.overview());
+
+        Date date = FormatUtil.formatDate(episode.firstAired());
+        String formattedDate = FormatUtil.formatDate(date);
+        ((TextView) findViewById(R.id.episode_details_time)).setText(formattedDate);
+
+        Glide
+                .with(this)
+                .load(episode.images().screenshot().get(Images.ImageSize.FULL))
+                .placeholder(R.drawable.highlight_placeholder)
+                .centerCrop()
+                .into(((ImageView) findViewById(R.id.episode_details_screenshot)));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
+
+        mPresenter = new EpisodeDetailsPresenter(this,this);
 
         Log.d(TAG, "onCreate()");
     }
@@ -31,23 +53,7 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        final EpisodeDetailsAdapter mListener = new EpisodeDetailsAdapter(this);
-
-        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(this.getString(R.string.api_url_base)).build();
-
-        EpisodeRemoteService service = mAdapter.create(EpisodeRemoteService.class);
-
-        service.getEpisodeDetails("sherlock", (long)1, (long)1, new Callback<Episode>() {
-            @Override
-            public void success(Episode episode, Response response) {
-                mListener.onEpisodeLoadSuccess(episode);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Log.e(TAG, "Error fetching episode", error.getCause());
-            }
-        });
+        mPresenter.loadEpisodeDetails("breaking-bad", (long)5, (long)3);
 
         Log.d(TAG, "onStart()");
     }
@@ -81,7 +87,7 @@ public class EpisodeDetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
         Log.d(TAG, "onRestoreInstanceState()");
