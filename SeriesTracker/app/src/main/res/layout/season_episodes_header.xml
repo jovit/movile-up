@@ -16,10 +16,30 @@
         style="@style/AppTheme.SeasonEpisodes.Header.Overlay"/>
     <TextView
         android:id="@+id/season_episodes_year"
-        android:layout_width="wrap_content"
+        android:layout_width="88dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:text="9999"
         style="@style/AppTheme.SeasonEpisodes.Header.Year"/>
+    <ImageView
+        android:id="@+id/season_episodes_thumbnail"
+        android:layout_width="88dp"
+        android:layout_height="128dp"
+        android:layout_below="@id/season_episodes_year"
+        android:src="@drawable/season_item_placeholder"
+        style="@style/AppTheme.SeasonEpisodes.Header.Thumbnail"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/season_episodes_thumbnail"
+        android:text="@string/season_episodes"
+        style="@style/AppTheme.SeasonEpisodes.Header.Episodes"/>
+    <TextView
+        android:id="@+id/season_episodes_rating"
+        style="@style/AppTheme.SeasonEpisodes.Header.Rating"
+        android:layout_alignParentRight="true"
+        android:text="0.0"
+        android:layout_width="48dp"
+        android:layout_height="48dp" />
 </RelativeLayout>

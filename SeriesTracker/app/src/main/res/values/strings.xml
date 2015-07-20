@@ -11,4 +11,6 @@
 
     <string name="episode_details_summary">SUMMARY</string>
 
+    <string name="season_episodes">Episodes</string>
+
 </resources>

@@ -5,8 +5,10 @@ import android.util.Log;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.listener.EpisodeDetailsCallback;
+import com.movile.up.seriestracker.listener.SeasonDetailsCallback;
 import com.movile.up.seriestracker.listener.SeasonEpisodesCallback;
 import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.model.Season;
 
 import java.util.List;
 
@@ -41,7 +43,7 @@ public class EpisodeRemoteServiceRetrofit {
 
         EpisodeRemoteService service = mAdapter.create(EpisodeRemoteService.class);
 
-        service.getSeasonEpisodes(show, season, new Callback<List<Episode>>(){
+        service.getSeasonEpisodes(show, season, new Callback<List<Episode>>() {
             @Override
             public void success(List<Episode> episodes, Response response) {
                 mListener.onSeasonEpisodesSuccess(episodes);
@@ -50,6 +52,24 @@ public class EpisodeRemoteServiceRetrofit {
             @Override
             public void failure(RetrofitError error) {
                 Log.e(TAG, "Error fetching episodes list", error.getCause());
+            }
+        });
+    }
+
+    public void loadSeasonDetails(Context mContext, final SeasonDetailsCallback mListener, String show, Long season){
+        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(mContext.getString(R.string.api_url_base)).build();
+
+        EpisodeRemoteService service = mAdapter.create(EpisodeRemoteService.class);
+
+        service.getSeasonDetails(show, season, new Callback<Season>(){
+            @Override
+            public void success(Season season, Response response) {
+                mListener.onSeasonDetailsSuccess(season);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.e(TAG, "Error fetching season", error.getCause());
             }
         });
     }
