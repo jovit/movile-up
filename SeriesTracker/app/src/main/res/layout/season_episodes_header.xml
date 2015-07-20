@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/season_episodes_header" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="360dp"
+    android:background="@color/default_background_first">
+    <ImageView
+        android:id="@+id/season_episodes_screenshot"
+        android:layout_width="match_parent"
+        android:layout_height="248dp"
+        style="@style/AppTheme.EpisodeDetails.Highlight"
+        android:src="@drawable/highlight_placeholder"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="248dp"
+        style="@style/AppTheme.SeasonEpisodes.Header.Overlay"/>
+    <TextView
+        android:id="@+id/season_episodes_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:text="9999"
+        style="@style/AppTheme.SeasonEpisodes.Header.Year"/>
+</RelativeLayout>

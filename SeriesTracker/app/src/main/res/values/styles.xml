@@ -85,4 +85,51 @@
         <item name="android:layout_marginBottom">@dimen/default_spacing_medium</item>
     </style>
 
+
+
+    <style name="AppTheme.SeasonEpisodes"/>
+
+    <style name="AppTheme.SeasonEpisodes.EpisodesList">
+        <item name="android:background">#FFFF</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:divider">@color/default_background_first</item>
+    </style>
+
+    <style name="AppTheme.SeasonEpisodes.Episode"/>
+
+    <style name="AppTheme.SeasonEpisodes.Episode.Number">
+    </style>
+
+    <style name="AppTheme.SeasonEpisodes.Episode.Number.Text">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/default_textColor_first</item>
+        <item name="android:textSize">@dimen/default_textSize_small</item>
+    </style>
+
+    <style name="AppTheme.SeasonEpisodes.Episode.Number.Image">
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:src">@drawable/episode_item_number</item>
+    </style>
+
+    <style name="AppTheme.SeasonEpisodes.Episode.Title">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/default_textSize_medium</item>
+        <item name="android:textColor">@color/default_textColor_fourth</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_large</item>
+    </style>
+
+    <style name="AppTheme.SeasonEpisodes.Header" />
+
+    <style name="AppTheme.SeasonEpisodes.Header.Overlay" parent="AppTheme.EpisodeDetails.Overlay"/>
+
+    <style name="AppTheme.SeasonEpisodes.Header.Screenshot">
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="AppTheme.SeasonEpisodes.Header.Year">
+        <item name="android:textColor">@color/default_textColor_first</item>
+        <item name="android:layout_marginTop">151dp</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_large</item>
+        <item name="android:textSize">@dimen/default_textSize_veryLarge</item>
+    </style>
 </resources>

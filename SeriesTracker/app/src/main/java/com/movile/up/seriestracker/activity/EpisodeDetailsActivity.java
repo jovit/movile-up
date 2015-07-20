@@ -53,7 +53,7 @@ public class EpisodeDetailsActivity extends AppCompatActivity implements Episode
     protected void onStart() {
         super.onStart();
 
-        mPresenter.loadEpisodeDetails("breaking-bad", (long)5, (long)3);
+        mPresenter.loadEpisodeDetails("", (long)1, (long)1);
 
         Log.d(TAG, "onStart()");
     }
