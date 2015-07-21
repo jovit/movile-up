@@ -56,15 +56,15 @@ public class EpisodeRemoteServiceRetrofit {
         });
     }
 
-    public void loadSeasonDetails(Context mContext, final SeasonDetailsCallback mListener, String show, Long season){
+    public void loadSeasonDetails(Context mContext, final SeasonDetailsCallback mListener, String show, final Long season){
         RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(mContext.getString(R.string.api_url_base)).build();
 
         EpisodeRemoteService service = mAdapter.create(EpisodeRemoteService.class);
 
-        service.getSeasonDetails(show, season, new Callback<Season>(){
+        service.getSeasonDetails(show, new Callback<List<Season>>(){
             @Override
-            public void success(Season season, Response response) {
-                mListener.onSeasonDetailsSuccess(season);
+            public void success(List<Season> seasons, Response response) {
+                mListener.onSeasonDetailsSuccess(seasons.get(season.intValue()-1));
             }
 
             @Override

@@ -10,15 +10,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.activity.base.BaseNavigationToolbarActivity;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.presenter.EpisodeDetailsPresenter;
 import com.movile.up.seriestracker.util.FormatUtil;
 import com.movile.up.seriestracker.view.EpisodeDetailsView;
 
+import java.text.MessageFormat;
 import java.util.Date;
 
-public class EpisodeDetailsActivity extends AppCompatActivity implements EpisodeDetailsView{
+public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implements EpisodeDetailsView{
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private EpisodeDetailsPresenter mPresenter;
 
@@ -37,6 +39,7 @@ public class EpisodeDetailsActivity extends AppCompatActivity implements Episode
                 .placeholder(R.drawable.highlight_placeholder)
                 .centerCrop()
                 .into(((ImageView) findViewById(R.id.episode_details_screenshot)));
+        hideLoading();
     }
 
     @Override
@@ -44,7 +47,18 @@ public class EpisodeDetailsActivity extends AppCompatActivity implements Episode
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
 
+        configureToolbar();
+
+        String show = "breaking-bad";
+        long season = (long) 4;
+        long episode = (long) 7;
+
+        getSupportActionBar().setTitle(formatToolbarTitle(season, episode));
+
+        showLoading();
+
         mPresenter = new EpisodeDetailsPresenter(this,this);
+        mPresenter.loadEpisodeDetails(show, season, episode);
 
         Log.d(TAG, "onCreate()");
     }
@@ -53,7 +67,7 @@ public class EpisodeDetailsActivity extends AppCompatActivity implements Episode
     protected void onStart() {
         super.onStart();
 
-        mPresenter.loadEpisodeDetails("", (long)1, (long)1);
+
 
         Log.d(TAG, "onStart()");
     }
@@ -110,6 +124,10 @@ public class EpisodeDetailsActivity extends AppCompatActivity implements Episode
         super.onDestroy();
 
         Log.d(TAG,"onDestroy()");
+    }
+
+    private String formatToolbarTitle(Long season, Long episode){
+        return MessageFormat.format("S{0} - E{1}", season, episode);
     }
 
 

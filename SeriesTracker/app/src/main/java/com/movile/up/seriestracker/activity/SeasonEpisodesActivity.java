@@ -8,15 +8,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.activity.base.BaseNavigationToolbarActivity;
 import com.movile.up.seriestracker.adapter.SeasonEpisodesListAdapter;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.model.Season;
 import com.movile.up.seriestracker.presenter.SeasonEpisodesPresenter;
 import com.movile.up.seriestracker.view.SeasonEpisodesView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
-public class SeasonEpisodesActivity extends AppCompatActivity implements SeasonEpisodesView {
+public class SeasonEpisodesActivity extends BaseNavigationToolbarActivity implements SeasonEpisodesView {
     private SeasonEpisodesListAdapter mAdapter;
     private SeasonEpisodesPresenter mPresenter;
     private View mHeader;
@@ -27,9 +29,17 @@ public class SeasonEpisodesActivity extends AppCompatActivity implements SeasonE
         setContentView(R.layout.season_episodes_activity);
 
         createEpisodesList();
+        configureToolbar();
+
+        String show = "house-of-cards";
+        Long season = new Long(3);
+
+        getSupportActionBar().setTitle("Season ".concat(season.toString()));
 
         mPresenter = new SeasonEpisodesPresenter(this,this);
-        mPresenter.loadSeason("house-of-cards",(long)3);
+
+        showLoading();
+        mPresenter.loadSeason(show, season);
 
     }
 
@@ -46,10 +56,12 @@ public class SeasonEpisodesActivity extends AppCompatActivity implements SeasonE
     @Override
     public void displayEpisodes(List<Episode> episodes) {
         this.mAdapter.updateEpisodes(episodes);
-    }
+        hideLoading();
+   }
 
     @Override
     public void displaySeason(Season season) {
-        ((TextView)mHeader.findViewById(R.id.season_episodes_rating)).setText(season.rating().toString());
+        ((TextView)mHeader.findViewById(R.id.season_episodes_rating)).
+                setText(new DecimalFormat("#.#").format(season.rating()));
     }
 }

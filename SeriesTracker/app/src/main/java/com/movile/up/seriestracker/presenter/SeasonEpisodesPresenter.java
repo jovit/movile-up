@@ -26,7 +26,7 @@ public class SeasonEpisodesPresenter implements SeasonEpisodesCallback, SeasonDe
 
     public void loadSeason(String show, Long season){
         new EpisodeRemoteServiceRetrofit().loadSeasonEpisodes(mContext, this, show, season);
-        //new EpisodeRemoteServiceRetrofit().loadSeasonDetails(mContext, this, show, season);
+        new EpisodeRemoteServiceRetrofit().loadSeasonDetails(mContext, this, show, season);
     }
 
     @Override
