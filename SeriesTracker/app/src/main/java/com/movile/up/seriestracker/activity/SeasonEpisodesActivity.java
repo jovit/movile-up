@@ -35,7 +35,7 @@ public class SeasonEpisodesActivity extends BaseNavigationToolbarActivity implem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.season_episodes_activity);
 
-        createEpisodesList();
+        configureEpisodesList();
         configureToolbar();
 
         mShow = "arrow";
@@ -50,7 +50,7 @@ public class SeasonEpisodesActivity extends BaseNavigationToolbarActivity implem
 
     }
 
-    private void createEpisodesList(){
+    private void configureEpisodesList(){
         ListView episodesList = (ListView) findViewById(R.id.season_episodes_list);
         mAdapter = new SeasonEpisodesListAdapter(this,this);
         mHeader = LayoutInflater.from(this)
