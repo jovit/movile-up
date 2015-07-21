@@ -13,4 +13,8 @@
 
     <string name="season_episodes">Episodes</string>
 
+
+    <!-- ShowDetailsActivity ViewPager Titles -->
+    <string name="show_details_info">INFO</string>
+    <string name="show_details_seasons">SEASONS</string>
 </resources>

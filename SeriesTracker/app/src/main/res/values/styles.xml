@@ -184,4 +184,12 @@
         <item name="android:layout_marginTop">264dp</item>
         <item name="android:layout_marginRight">@dimen/default_spacing_large</item>
     </style>
+
+    <style name="AppTheme.ShowDetails"/>
+    <style name="AppTheme.ShowDetails.Content"/>
+    <style name="AppTheme.ShowDetails.Content.Header">
+        <item name="android:textColor">@color/default_textColor_first</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:background">@color/default_background_fourth</item>
+    </style>
 </resources>

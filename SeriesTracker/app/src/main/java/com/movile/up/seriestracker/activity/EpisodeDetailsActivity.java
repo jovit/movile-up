@@ -21,8 +21,23 @@ import java.text.MessageFormat;
 import java.util.Date;
 
 public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implements EpisodeDetailsView{
+
+    public static final String EXTRA_SHOW = "episode_details_show";
+    public static final String EXTRA_SEASON = "episode_details_season";
+    public static final String EXTRA_EPISODE = "episode_details_episode";
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private EpisodeDetailsPresenter mPresenter;
+
+    private String mShow;
+    private Long mSeason;
+    private Long mEpisode;
+
+    private void getIntentExtraInformation(){
+        Bundle extras = getIntent().getExtras();
+        mShow = extras.getString(EXTRA_SHOW);
+        mSeason = extras.getLong(EXTRA_SEASON);
+        mEpisode = extras.getLong(EXTRA_EPISODE);
+    }
 
     @Override
     public void displayEpisodeDetails(Episode episode) {
@@ -49,16 +64,18 @@ public class EpisodeDetailsActivity extends BaseNavigationToolbarActivity implem
 
         configureToolbar();
 
-        String show = "breaking-bad";
-        long season = (long) 4;
-        long episode = (long) 7;
 
-        getSupportActionBar().setTitle(formatToolbarTitle(season, episode));
 
         showLoading();
 
+        getIntentExtraInformation();
+
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(formatToolbarTitle(mSeason, mEpisode));
+        }
+
         mPresenter = new EpisodeDetailsPresenter(this,this);
-        mPresenter.loadEpisodeDetails(show, season, episode);
+        mPresenter.loadEpisodeDetails(mShow, mSeason, mEpisode);
 
         Log.d(TAG, "onCreate()");
     }

@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.listener.OnEpisodeClickListener;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.util.FormatUtil;
 
@@ -20,6 +21,7 @@ import java.util.List;
  */
 public class SeasonEpisodesListAdapter extends ArrayAdapter<Episode> {
     private List<Episode> episodes;
+    private OnEpisodeClickListener mClickListener;
     private static final int TYPE_TBA = 0;
     private static final int TYPE_AIRED = 1;
 
@@ -31,8 +33,9 @@ public class SeasonEpisodesListAdapter extends ArrayAdapter<Episode> {
         return episodes.size();
     }
 
-    public SeasonEpisodesListAdapter(Context context) {
+    public SeasonEpisodesListAdapter(Context context, OnEpisodeClickListener clickListener) {
         super(context, R.layout.season_episodes_item);
+        mClickListener = clickListener;
     }
 
     public int getItemViewType(int position){
@@ -71,10 +74,18 @@ public class SeasonEpisodesListAdapter extends ArrayAdapter<Episode> {
         return view;
     }
     private void populateViewFromHolder(ViewHolder holder, int position){
-        Episode episode = getItem(position);
+        final Episode episode = getItem(position);
         if(episode != null){
             holder.title().setText(episode.title());
             holder.number().setText("E".concat((episode.number() < 10 ? "0" : "") + episode.number()));
+            if(getItemViewType(position) != TYPE_TBA){
+                holder.root().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mClickListener.onEpisodeClick(episode);
+                    }
+                });
+            }
         }
     }
 
