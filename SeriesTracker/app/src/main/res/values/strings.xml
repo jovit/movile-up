@@ -17,4 +17,6 @@
     <!-- ShowDetailsActivity ViewPager Titles -->
     <string name="show_details_info">INFO</string>
     <string name="show_details_seasons">SEASONS</string>
+
+    <string name="show_genres">GENRES</string>
 </resources>

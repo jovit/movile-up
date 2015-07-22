@@ -58,21 +58,5 @@ public class EpisodeRemoteServiceRetrofit {
         });
     }
 
-    public void loadShowDetails(Context mContext, final ShowDetailsCallback mListener, String show){
-        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(mContext.getString(R.string.api_url_base)).build();
 
-        EpisodeRemoteService service = mAdapter.create(EpisodeRemoteService.class);
-
-        service.getShowDetails(show, new Callback<Show>() {
-            @Override
-            public void success(Show show, Response response) {
-                mListener.onShowDetailsSuccess(show);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Log.e(TAG, "Error fetching show", error.getCause());
-            }
-        });
-    }
 }
