@@ -2,6 +2,7 @@ package com.movile.up.seriestracker.remote;
 
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.model.Season;
+import com.movile.up.seriestracker.model.Show;
 import com.movile.up.seriestracker.util.ApiConfiguration;
 
 import java.util.List;
@@ -42,4 +43,13 @@ public interface EpisodeRemoteService {
     void getSeasonDetails(
             @Path("show") String show,
             Callback<List<Season>> callback);
+
+    @Headers({
+            "trakt-api-version: " + ApiConfiguration.API_VERSION,
+            "trakt-api-key: " + ApiConfiguration.API_KEY
+    })
+    @GET("/shows/{show}?extended=full,images")
+    void getShowDetails(
+            @Path("show") String show,
+            Callback<Show> callback);
 }

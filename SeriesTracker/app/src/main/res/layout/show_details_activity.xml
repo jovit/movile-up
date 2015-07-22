@@ -23,7 +23,6 @@
             style="@style/AppTheme.ShowDetails.Header.Rating"/>
         <TextView
             android:id="@+id/show_details_year"
-            android:text="2015"
             style="@style/AppTheme.ShowDetails.Header.Year"
             android:layout_width="88dp"
             android:layout_height="wrap_content"
