@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activity.base.BaseNavigationToolbarActivity;
 import com.movile.up.seriestracker.adapter.ShowDetailsViewPagerAdapter;
+import com.movile.up.seriestracker.fragment.ShowDetailsSeasonsFragment;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.model.Show;
 import com.movile.up.seriestracker.presenter.ShowDetailsPresenter;
@@ -22,6 +23,7 @@ import java.text.DecimalFormat;
 public class ShowDetailsActivity extends BaseNavigationToolbarActivity implements ShowDetailsView{
     private String mShow;
     private ShowDetailsPresenter mPresenter;
+    private ShowDetailsViewPagerAdapter mViewPagerAdapter;
 
     @Override
     public void displayShow(Show show) {
@@ -42,7 +44,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_details_activity);
 
-        mShow = "house-of-cards";
+        mShow = "breaking-bad";
         mPresenter = new ShowDetailsPresenter(this,this);
         showLoading();
         mPresenter.loadShowDetails(mShow);
@@ -53,7 +55,8 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
 
     private void configureViewPager(){
         ViewPager mViewPager = (ViewPager) findViewById(R.id.show_details_content);
-        mViewPager.setAdapter(new ShowDetailsViewPagerAdapter(getSupportFragmentManager(), this));
+        mViewPagerAdapter = new ShowDetailsViewPagerAdapter(getSupportFragmentManager(), this, mShow);
+        mViewPager.setAdapter(mViewPagerAdapter);
 
     }
 }

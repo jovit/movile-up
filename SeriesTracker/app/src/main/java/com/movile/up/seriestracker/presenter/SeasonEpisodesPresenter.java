@@ -8,6 +8,7 @@ import com.movile.up.seriestracker.listener.SeasonEpisodesCallback;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.model.Season;
 import com.movile.up.seriestracker.remote.EpisodeRemoteServiceRetrofit;
+import com.movile.up.seriestracker.remote.SeasonRemoteServiceRetrofit;
 import com.movile.up.seriestracker.view.SeasonEpisodesView;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class SeasonEpisodesPresenter implements SeasonEpisodesCallback, SeasonDe
 
     public void loadSeason(String show, Long season){
         new EpisodeRemoteServiceRetrofit().loadSeasonEpisodes(mContext, this, show, season);
-        new EpisodeRemoteServiceRetrofit().loadSeasonDetails(mContext, this, show, season);
+        new SeasonRemoteServiceRetrofit().loadSeasonDetails(mContext, this, show, season);
     }
 
     @Override

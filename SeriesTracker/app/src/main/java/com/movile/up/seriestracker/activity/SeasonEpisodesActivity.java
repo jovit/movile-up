@@ -24,6 +24,9 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 public class SeasonEpisodesActivity extends BaseNavigationToolbarActivity implements SeasonEpisodesView, OnEpisodeClickListener {
+    public static final String EXTRA_SHOW = "season_episodes_extra_show";
+    public static final String EXTRA_SEASON = "season_episodes_extra_season";
+
     private SeasonEpisodesListAdapter mAdapter;
     private View mHeader;
 
@@ -38,8 +41,8 @@ public class SeasonEpisodesActivity extends BaseNavigationToolbarActivity implem
         configureEpisodesList();
         configureToolbar();
 
-        mShow = "arrow";
-        mSeason = (long)3;
+        getIntentExtraInformation();
+
         if(getSupportActionBar() != null)
          getSupportActionBar().setTitle("Season ".concat(mSeason.toString()));
 
@@ -58,6 +61,12 @@ public class SeasonEpisodesActivity extends BaseNavigationToolbarActivity implem
 
         episodesList.addHeaderView(mHeader,null, false);
         episodesList.setAdapter(mAdapter);
+    }
+
+    private void getIntentExtraInformation(){
+        Bundle extras = getIntent().getExtras();
+        mShow = extras.getString(EXTRA_SHOW);
+        mSeason = extras.getLong(EXTRA_SEASON);
     }
 
     @Override
@@ -88,7 +97,7 @@ public class SeasonEpisodesActivity extends BaseNavigationToolbarActivity implem
                 .into(((ImageView) findViewById(R.id.season_episodes_screenshot)));
         Glide
                 .with(this)
-                .load(season.images().thumb().get(Images.ImageSize.FULL))
+                .load(season.images().poster().get(Images.ImageSize.FULL))
                 .placeholder(R.drawable.season_item_placeholder)
                 .centerCrop()
                 .into(((ImageView) findViewById(R.id.season_episodes_thumbnail)));

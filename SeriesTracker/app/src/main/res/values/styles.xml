@@ -221,4 +221,28 @@
         <item name="android:textSize">15sp</item>
         <item name="android:background">@color/default_background_fourth</item>
     </style>
+
+
+    <style name="AppTheme.ShowDetails.Seasons"/>
+
+    <style name="AppTheme.ShowDetails.Seasons.Item"/>
+
+    <style name="AppTheme.ShowDetails.Seasons.Item.Poster">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:src">@drawable/season_item_placeholder</item>
+    </style>
+
+    <style name="AppTheme.ShowDetails.Seasons.Item.Number">
+        <item name="android:layout_marginTop">@dimen/default_spacing_medium</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_medium</item>
+        <item name="android:textSize">@dimen/default_textSize_small</item>
+        <item name="android:textColor">@color/default_textColor_fourth</item>
+    </style>
+
+    <style name="AppTheme.ShowDetails.Seasons.Item.EpisodesNumber">
+        <item name="android:layout_marginLeft">@dimen/default_spacing_medium</item>
+        <item name="android:textSize">@dimen/default_textSize_verySmall</item>
+        <item name="android:textColor">@color/default_textColor_sixth</item>
+    </style>
+
 </resources>

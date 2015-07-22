@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/default_spacing_medium"
+    android:layout_marginTop="@dimen/default_spacing_large">
+    <android.support.v7.widget.CardView
+        android:layout_width="88dp"
+        android:layout_height="176dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/show_details_seasons_item_poster"
+                android:layout_width="match_parent"
+                android:layout_height="128dp"
+                style="@style/AppTheme.ShowDetails.Seasons.Item.Poster"/>
+            <TextView
+                android:id="@+id/show_details_seasons_item_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/show_details_seasons_item_poster"
+                style="@style/AppTheme.ShowDetails.Seasons.Item.Number"
+                android:text="Season 1"/>
+            <TextView
+                android:id="@+id/show_details_seasons_item_episodes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/show_details_seasons_item_number"
+                style="@style/AppTheme.ShowDetails.Seasons.Item.EpisodesNumber"
+                android:text="10 episodes"/>
+        </RelativeLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

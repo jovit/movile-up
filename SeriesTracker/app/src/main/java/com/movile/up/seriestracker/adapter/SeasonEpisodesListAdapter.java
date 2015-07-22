@@ -39,7 +39,11 @@ public class SeasonEpisodesListAdapter extends ArrayAdapter<Episode> {
     }
 
     public int getItemViewType(int position){
-        Date date = FormatUtil.formatDate(episodes.get(position).firstAired());
+        Episode episode = episodes.get(position);
+        if(episode == null || episode.firstAired() == null || episode.number() == null || episode.overview() == null){
+            return TYPE_TBA;
+        }
+        Date date = FormatUtil.formatDate(episode.firstAired());
         Date currentDate = new Date();
         if(date.compareTo(currentDate) > 0){
             return TYPE_TBA;
