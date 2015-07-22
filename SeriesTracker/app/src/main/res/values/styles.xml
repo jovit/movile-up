@@ -215,6 +215,16 @@
         <item name="android:layout_marginBottom">7dp</item>
     </style>
 
+    <style name="AppTheme.ShowDetails.Header.State">
+        <item name="android:paddingLeft">@dimen/default_spacing_large</item>
+        <item name="android:paddingRight">@dimen/default_spacing_large</item>
+        <item name="android:textColor">@color/default_textColor_first</item>
+        <item name="android:textSize">@dimen/default_textSize_small</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">88dp</item>
+        <item name="android:background">@drawable/show_details_status</item>
+    </style>
+
     <style name="AppTheme.ShowDetails.Content"/>
     <style name="AppTheme.ShowDetails.Content.Header">
         <item name="android:textColor">@color/default_textColor_first</item>
@@ -296,4 +306,19 @@
         <item name="android:layout_marginRight">8dp</item>
     </style>
 
+    <style name="AppTheme.ShowDetails.Info.Details"/>
+
+    <style name="AppTheme.ShowDetails.Info.Details.CardView" parent="AppTheme.ShowDetails.Info.Genres.CardView"/>
+
+    <style name="AppTheme.ShowDetails.Info.Details.Container" parent="AppTheme.ShowDetails.Info.Summary.Container"/>
+
+    <style name="AppTheme.ShowDetails.Info.Details.Header" parent="AppTheme.ShowDetails.Info.Summary.Header"/>
+
+    <style name="AppTheme.ShowDetails.Info.Details.Separator" parent="AppTheme.ShowDetails.Info.Summary.Separator"/>
+
+    <style name="AppTheme.ShowDetails.Info.Details.Body">
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">@dimen/default_textSize_medium</item>
+        <item name="android:textColor">@color/default_textColor_fourth</item>
+    </style>
 </resources>

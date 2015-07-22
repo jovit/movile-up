@@ -28,6 +28,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
     @Override
     public void displayShow(Show show) {
         getSupportActionBar().setTitle(show.title());
+        ((TextView)findViewById(R.id.show_details_state)).setText(show.status());
         ((TextView)findViewById(R.id.show_details_rating)).setText(new DecimalFormat("#.#").format(show.rating()));
         ((TextView)findViewById(R.id.show_details_year)).setText(show.year().toString());
         Glide
@@ -44,7 +45,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_details_activity);
 
-        mShow = "breaking-bad";
+        mShow = "how-i-met-your-mother";
         mPresenter = new ShowDetailsPresenter(this,this);
         showLoading();
         mPresenter.loadShowDetails(mShow);
