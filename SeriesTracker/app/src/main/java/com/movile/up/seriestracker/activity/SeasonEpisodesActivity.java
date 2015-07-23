@@ -97,7 +97,7 @@ public class SeasonEpisodesActivity extends BaseNavigationToolbarActivity implem
                 .into(((ImageView) findViewById(R.id.season_episodes_screenshot)));
         Glide
                 .with(this)
-                .load(season.images().poster().get(Images.ImageSize.FULL))
+                .load(season.images().poster().get(Images.ImageSize.THUMB))
                 .placeholder(R.drawable.season_item_placeholder)
                 .centerCrop()
                 .into(((ImageView) findViewById(R.id.season_episodes_thumbnail)));

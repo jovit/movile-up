@@ -25,6 +25,8 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
     private ShowDetailsPresenter mPresenter;
     private ShowDetailsViewPagerAdapter mViewPagerAdapter;
 
+    public static final String EXTRA_SHOW = "show_details_activity_extra_show";
+
     @Override
     public void displayShow(Show show) {
         getSupportActionBar().setTitle(show.title());
@@ -40,12 +42,19 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         hideLoading();
     }
 
+
+    private void getIntentExtraInformation(){
+        Bundle extras = getIntent().getExtras();
+        mShow = extras.getString(EXTRA_SHOW);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_details_activity);
+        getIntentExtraInformation();
 
-        mShow = "house-of-cards";
         mPresenter = new ShowDetailsPresenter(this,this);
         showLoading();
         mPresenter.loadShowDetails(mShow);

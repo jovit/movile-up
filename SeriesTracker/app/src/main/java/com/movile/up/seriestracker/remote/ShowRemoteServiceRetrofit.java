@@ -4,8 +4,11 @@ import android.content.Context;
 import android.util.Log;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.listener.PopularShowsCallback;
 import com.movile.up.seriestracker.listener.ShowDetailsCallback;
 import com.movile.up.seriestracker.model.Show;
+
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -35,4 +38,23 @@ public class ShowRemoteServiceRetrofit {
             }
         });
     }
+
+    public void loadPopularShows(Context mContext, final PopularShowsCallback mListener){
+        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(mContext.getString(R.string.api_url_base)).build();
+
+        ShowRemoteService service = mAdapter.create(ShowRemoteService.class);
+
+        service.getPopularShows(new Callback<List<Show>>() {
+            @Override
+            public void success(List<Show> shows, Response response) {
+                mListener.onPopularShowsSuccess(shows);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.e(TAG, "Error fetching popular shows", error.getCause());
+            }
+        });
+    }
+
 }

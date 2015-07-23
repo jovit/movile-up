@@ -39,7 +39,6 @@
         android:id="@+id/season_episodes_rating"
         style="@style/AppTheme.SeasonEpisodes.Header.Rating"
         android:layout_alignParentRight="true"
-        android:text="0.0"
         android:layout_width="48dp"
         android:layout_height="48dp" />
 </RelativeLayout>
