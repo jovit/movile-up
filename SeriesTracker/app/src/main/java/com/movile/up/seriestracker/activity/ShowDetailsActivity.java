@@ -45,7 +45,7 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_details_activity);
 
-        mShow = "how-i-met-your-mother";
+        mShow = "house-of-cards";
         mPresenter = new ShowDetailsPresenter(this,this);
         showLoading();
         mPresenter.loadShowDetails(mShow);
