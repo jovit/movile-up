@@ -72,7 +72,7 @@ public class ShowsGridAdapter extends ArrayAdapter<Show> {
         final Show show = shows.get(position);
         Glide
                 .with(mContext)
-                .load(show.images().poster().get(Images.ImageSize.FULL))
+                .load(show.images().poster().get(Images.ImageSize.THUMB))
                 .placeholder(R.drawable.show_item_placeholder)
                 .centerCrop()
                 .into(holder.item());

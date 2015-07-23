@@ -13,8 +13,6 @@ import com.movile.up.seriestracker.remote.UpdatesRemoteServiceRetrofit;
  * Created by android on 7/23/15.
  */
 public class UpdatesService extends IntentService{
-    public static final String EXTRA_CONTEXT = "updates_service_extra_context";
-
     public UpdatesService(String name) {
         super(name);
     }
@@ -25,10 +23,7 @@ public class UpdatesService extends IntentService{
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Bundle extras = intent.getExtras();
-        Context context = (Context)extras.get(EXTRA_CONTEXT);
-        ShowUpdate update = new UpdatesRemoteServiceRetrofit().getLatestUpdate(context);
-
+        ShowUpdate update = new UpdatesRemoteServiceRetrofit().getLatestUpdate(this);
         Intent intentBroadcast = new Intent("com.movile.up.seriestracker.action.SHOW_UPDATE");
         intentBroadcast.putExtra(ShowUpdateReceiver.EXTRA_UPDATE, update);
         sendBroadcast(intentBroadcast);

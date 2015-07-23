@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.GridView;
 
@@ -24,6 +25,8 @@ public class ShowsActivity extends AppCompatActivity implements ShowsView, OnSho
     private ShowsPresenter mPresenter;
     private ShowsGridAdapter mAdapter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +38,7 @@ public class ShowsActivity extends AppCompatActivity implements ShowsView, OnSho
 
         PendingIntent pendingIntent = PendingIntent.getService(this, 0, new Intent(this, UpdatesService.class), 0);
         AlarmManager manager = (AlarmManager) this.getSystemService(this.ALARM_SERVICE);
-        manager.setRepeating(AlarmManager.RTC_WAKEUP, 0, 10000, pendingIntent);
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, 0, 1000, pendingIntent);
     }
 
     public void configureShowsGrid(){
