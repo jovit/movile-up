@@ -296,4 +296,23 @@
         <item name="android:layout_marginRight">8dp</item>
     </style>
 
+    <style name="AppTheme.Shows"/>
+
+    <style name="AppTheme.Shows.Grid">
+        <item name="android:numColumns">auto_fit</item>
+        <item name="android:verticalSpacing">@dimen/default_spacing_small</item>
+        <item name="android:horizontalSpacing">@dimen/default_spacing_small</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:columnWidth">114dp</item>
+        <item name="android:stretchMode">spacingWidthUniform</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="AppTheme.Shows.Item">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:src">@drawable/show_item_placeholder</item>
+    </style>
+
 </resources>
