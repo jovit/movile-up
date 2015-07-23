@@ -16,15 +16,13 @@
             android:id="@+id/season_episodes_item_number"
             style="@style/AppTheme.SeasonEpisodes.Episode.Number.Text"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="E00"/>
+            android:layout_height="match_parent"/>
     </RelativeLayout>
 
     <TextView
         android:id="@+id/season_episodes_item_title"
         style="@style/AppTheme.SeasonEpisodes.Episode.Title"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="Title PlaceHolder"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

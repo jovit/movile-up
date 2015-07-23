@@ -1,5 +1,7 @@
 package com.movile.up.seriestracker.activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import com.movile.up.seriestracker.adapter.ShowsGridAdapter;
 import com.movile.up.seriestracker.listener.OnShowClickListener;
 import com.movile.up.seriestracker.model.Show;
 import com.movile.up.seriestracker.presenter.ShowsPresenter;
+import com.movile.up.seriestracker.service.UpdatesService;
 import com.movile.up.seriestracker.view.ShowsView;
 
 import java.util.List;
@@ -29,6 +32,10 @@ public class ShowsActivity extends AppCompatActivity implements ShowsView, OnSho
 
         mPresenter = new ShowsPresenter(this, this);
         mPresenter.loadPopularShows();
+
+        PendingIntent pendingIntent = PendingIntent.getService(this, 0, new Intent(this, UpdatesService.class), 0);
+        AlarmManager manager = (AlarmManager) this.getSystemService(this.ALARM_SERVICE);
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, 0, 10000, pendingIntent);
     }
 
     public void configureShowsGrid(){

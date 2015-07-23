@@ -28,15 +28,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/show_details_seasons_item_poster"
-                    style="@style/AppTheme.ShowDetails.Seasons.Item.Number"
-                    android:text="Season 1"/>
+                    style="@style/AppTheme.ShowDetails.Seasons.Item.Number"/>
                 <TextView
                     android:id="@+id/show_details_seasons_item_episodes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/show_details_seasons_item_number"
-                    style="@style/AppTheme.ShowDetails.Seasons.Item.EpisodesNumber"
-                    android:text="10 episodes"/>
+                    style="@style/AppTheme.ShowDetails.Seasons.Item.EpisodesNumber"/>
             </RelativeLayout>
         </com.movile.up.seriestracker.custom.RoundedFrameLayout>
 
