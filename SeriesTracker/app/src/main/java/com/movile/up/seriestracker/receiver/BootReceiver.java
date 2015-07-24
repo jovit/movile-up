@@ -13,6 +13,6 @@ public class BootReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         PendingIntent pendingIntent = PendingIntent.getService(context, 0, new Intent(context, UpdatesService.class), 0);
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        manager.setRepeating(AlarmManager.RTC_WAKEUP, 0, 10000, pendingIntent);
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, 0, 100000, pendingIntent);
     }
 }
