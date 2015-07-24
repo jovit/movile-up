@@ -29,7 +29,8 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
 
     @Override
     public void displayShow(Show show) {
-        getSupportActionBar().setTitle(show.title());
+        if(getSupportActionBar() != null)
+          getSupportActionBar().setTitle(show.title());
         ((TextView)findViewById(R.id.show_details_state)).setText(show.status());
         ((TextView)findViewById(R.id.show_details_rating)).setText(new DecimalFormat("#.#").format(show.rating()));
         ((TextView)findViewById(R.id.show_details_year)).setText(show.year().toString());

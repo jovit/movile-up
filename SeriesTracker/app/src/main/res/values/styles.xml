@@ -294,7 +294,9 @@
 
     <style name="AppTheme.ShowDetails.Info.Genres.Header" parent="AppTheme.ShowDetails.Info.Summary.Header"/>
 
-    <style name="AppTheme.ShowDetails.Info.Genres.Separator" parent="AppTheme.ShowDetails.Info.Summary.Separator"/>
+    <style name="AppTheme.ShowDetails.Info.Genres.Separator" parent="AppTheme.ShowDetails.Info.Summary.Separator">
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
 
     <style name="AppTheme.ShowDetails.Info.Genre">
         <item name="android:paddingLeft">13dp</item>
@@ -306,6 +308,7 @@
         <item name="android:background">@drawable/show_information_genre</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginTop">10dp</item>
     </style>
 
     <style name="AppTheme.ShowDetails.Info.Details"/>

@@ -40,12 +40,34 @@ public class ShowDetailsInfoFragment extends Fragment implements ShowDetailsInfo
     public void displayShow(Show show) {
         ((TextView)this.getActivity().findViewById(R.id.show_details_info_summary)).setText(show.overview());
 
-        LinearLayout container = (LinearLayout)this.getView().findViewById(R.id.show_details_info_genres);
+        LinearLayout container = null;
+        if(this.getView() != null) {
+            container = (LinearLayout) this.getView().findViewById(R.id.show_details_info_genres);
+        }
+        LinearLayout currentRow = null;
+        int itemsInRow = 0;
         for(int i=0; i<show.genres().length; i++){
-            View genreView = LayoutInflater.from(this.getActivity()).inflate(R.layout.show_details_info_genre, container,false);
+            if(itemsInRow == 0){
+                currentRow = new LinearLayout(this.getActivity());
+                currentRow.setOrientation(LinearLayout.HORIZONTAL);
+                currentRow.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            }
+
+            View genreView = LayoutInflater.from(this.getActivity()).inflate(R.layout.show_details_info_genre, currentRow, false);
             ((TextView)genreView.findViewById(R.id.show_details_info_genre)).setText(show.genres()[i]);
 
-            container.addView(genreView);
+            currentRow.addView(genreView);
+
+            itemsInRow++;
+
+            if(itemsInRow == 3 && container != null) {
+                container.addView(currentRow);
+                currentRow = null;
+                itemsInRow = 0;
+            }
+        }
+        if(currentRow != null && container != null){
+            container.addView(currentRow);
         }
 
         TextView details = (TextView) this.getActivity().findViewById(R.id.show_details_info_details);
