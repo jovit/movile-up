@@ -24,7 +24,6 @@ import java.text.DecimalFormat;
  */
 public class ShowDetailsActivity extends BaseNavigationToolbarActivity implements ShowDetailsView{
     private String mShow;
-    private String mTitle;
     private ShowDetailsPresenter mPresenter;
     private ShowDetailsViewPagerAdapter mViewPagerAdapter;
     private FloatingActionButton mFavoriteView;

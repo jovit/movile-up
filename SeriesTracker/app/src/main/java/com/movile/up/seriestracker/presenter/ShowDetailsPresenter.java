@@ -36,11 +36,11 @@ public class ShowDetailsPresenter implements ShowDetailsCallback, FavoriteListen
     }
 
     public void addFavorite(Favorite favorite){
-        new RemoteAddFavoriteAsyncTask(mContext).execute(favorite);
+        new RemoteAddFavoriteAsyncTask().execute(favorite);
     }
 
     public void removeFavorite(String show){
-        new RemoteDeleteFavoriteAsyncTask(mContext).execute(show);
+        new RemoteDeleteFavoriteAsyncTask().execute(show);
     }
 
     @Override

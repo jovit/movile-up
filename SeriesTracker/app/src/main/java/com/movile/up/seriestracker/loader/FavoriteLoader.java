@@ -3,7 +3,7 @@ package com.movile.up.seriestracker.loader;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
-import com.movile.up.seriestracker.database.manual.dao.FavoriteDAO;
+import com.movile.up.seriestracker.database.dbflow.dao.FavoriteDAO;
 import com.movile.up.seriestracker.model.Favorite;
 
 /**
@@ -22,6 +22,6 @@ public class FavoriteLoader extends AsyncTaskLoader<Favorite> {
 
     @Override
     public Favorite loadInBackground() {
-        return new FavoriteDAO(mContext).query(mSlug);
+        return new FavoriteDAO().query(mSlug);
     }
 }
