@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activity.base.BaseNavigationToolbarActivity;
 import com.movile.up.seriestracker.adapter.ShowDetailsViewPagerAdapter;
-import com.movile.up.seriestracker.fragment.ShowDetailsSeasonsFragment;
 import com.movile.up.seriestracker.model.Favorite;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.model.Show;

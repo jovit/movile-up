@@ -3,9 +3,7 @@ package com.movile.up.seriestracker.loader;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
-import com.movile.up.seriestracker.database.manual.SeriesTrackerDbHelper;
 import com.movile.up.seriestracker.database.manual.dao.FavoriteDAO;
-import com.movile.up.seriestracker.database.manual.provider.SeriesTrackerContentProvider;
 import com.movile.up.seriestracker.model.Favorite;
 
 /**

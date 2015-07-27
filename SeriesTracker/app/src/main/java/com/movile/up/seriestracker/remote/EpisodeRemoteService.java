@@ -1,8 +1,6 @@
 package com.movile.up.seriestracker.remote;
 
 import com.movile.up.seriestracker.model.Episode;
-import com.movile.up.seriestracker.model.Season;
-import com.movile.up.seriestracker.model.Show;
 import com.movile.up.seriestracker.util.ApiConfiguration;
 
 import java.util.List;

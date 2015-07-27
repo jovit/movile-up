@@ -5,12 +5,8 @@ import android.util.Log;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.listener.EpisodeDetailsCallback;
-import com.movile.up.seriestracker.listener.SeasonDetailsCallback;
 import com.movile.up.seriestracker.listener.SeasonEpisodesCallback;
-import com.movile.up.seriestracker.listener.ShowDetailsCallback;
 import com.movile.up.seriestracker.model.Episode;
-import com.movile.up.seriestracker.model.Season;
-import com.movile.up.seriestracker.model.Show;
 
 import java.util.List;
 

@@ -14,8 +14,6 @@ import com.movile.up.seriestracker.listener.OnSeasonClickListener;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.model.Season;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 /**

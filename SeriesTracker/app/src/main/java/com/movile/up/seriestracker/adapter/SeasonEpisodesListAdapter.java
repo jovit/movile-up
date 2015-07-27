@@ -12,7 +12,6 @@ import com.movile.up.seriestracker.listener.OnEpisodeClickListener;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.util.FormatUtil;
 
-import java.text.Normalizer;
 import java.util.Date;
 import java.util.List;
 

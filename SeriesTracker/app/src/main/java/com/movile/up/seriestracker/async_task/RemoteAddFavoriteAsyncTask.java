@@ -1,6 +1,5 @@
 package com.movile.up.seriestracker.async_task;
 
-import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.os.AsyncTask;
 

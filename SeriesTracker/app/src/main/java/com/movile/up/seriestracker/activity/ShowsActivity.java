@@ -1,20 +1,15 @@
 package com.movile.up.seriestracker.activity;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.GridView;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.adapter.ShowsGridAdapter;
-import com.movile.up.seriestracker.database.manual.SeriesTrackerDbHelper;
 import com.movile.up.seriestracker.listener.OnShowClickListener;
 import com.movile.up.seriestracker.model.Show;
 import com.movile.up.seriestracker.presenter.ShowsPresenter;
-import com.movile.up.seriestracker.service.UpdatesService;
 import com.movile.up.seriestracker.view.ShowsView;
 
 import java.util.List;
