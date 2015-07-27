@@ -10,6 +10,10 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
 
+    <provider
+        android:name=".database.manual.provider.SeriesTrackerContentProvider"
+        android:authorities="@string/database_authority" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
