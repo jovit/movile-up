@@ -1,5 +1,6 @@
 package com.movile.up.seriestracker.view;
 
+import com.movile.up.seriestracker.model.Favorite;
 import com.movile.up.seriestracker.model.Show;
 
 /**
@@ -7,4 +8,5 @@ import com.movile.up.seriestracker.model.Show;
  */
 public interface ShowDetailsView {
     void displayShow(Show show);
+    void displayFavorite(Favorite favorite);
 }

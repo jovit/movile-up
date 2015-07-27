@@ -1,7 +1,9 @@
 package com.movile.up.seriestracker.activity;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,6 +12,7 @@ import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activity.base.BaseNavigationToolbarActivity;
 import com.movile.up.seriestracker.adapter.ShowDetailsViewPagerAdapter;
 import com.movile.up.seriestracker.fragment.ShowDetailsSeasonsFragment;
+import com.movile.up.seriestracker.model.Favorite;
 import com.movile.up.seriestracker.model.Images;
 import com.movile.up.seriestracker.model.Show;
 import com.movile.up.seriestracker.presenter.ShowDetailsPresenter;
@@ -22,8 +25,11 @@ import java.text.DecimalFormat;
  */
 public class ShowDetailsActivity extends BaseNavigationToolbarActivity implements ShowDetailsView{
     private String mShow;
+    private String mTitle;
     private ShowDetailsPresenter mPresenter;
     private ShowDetailsViewPagerAdapter mViewPagerAdapter;
+    private FloatingActionButton mFavoriteView;
+    private boolean favoriteOn;
 
     public static final String EXTRA_SHOW = "show_details_activity_extra_show";
 
@@ -43,6 +49,33 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         hideLoading();
     }
 
+    @Override
+    public void displayFavorite(Favorite favorite) {
+        if(favorite != null){
+            mFavoriteView.setImageResource(R.drawable.show_details_favorite_on);
+            mFavoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.favorite_color_on));
+            favoriteOn = true;
+        }else{
+            mFavoriteView.setImageResource(R.drawable.show_details_favorite_off);
+            mFavoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.favorite_color_off));
+            favoriteOn = false;
+        }
+    }
+
+    public void onFavoriteClick(){
+        if(!favoriteOn){
+            mFavoriteView.setImageResource(R.drawable.show_details_favorite_on);
+            mFavoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.favorite_color_on));
+            if(getSupportActionBar() != null && getSupportActionBar().getTitle() != null)
+               mPresenter.addFavorite(new Favorite(mShow,getSupportActionBar().getTitle().toString()));
+            favoriteOn = true;
+        }else{
+            mFavoriteView.setImageResource(R.drawable.show_details_favorite_off);
+            mFavoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.favorite_color_off));
+            mPresenter.removeFavorite(mShow);
+            favoriteOn = false;
+        }
+    }
 
     private void getIntentExtraInformation(){
         Bundle extras = getIntent().getExtras();
@@ -56,9 +89,20 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         setContentView(R.layout.show_details_activity);
         getIntentExtraInformation();
 
+        mFavoriteView = (FloatingActionButton)findViewById(R.id.show_details_favorite);
+        mFavoriteView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onFavoriteClick();
+            }
+        });
+
         mPresenter = new ShowDetailsPresenter(this,this);
         showLoading();
         mPresenter.loadShowDetails(mShow);
+        mPresenter.loadFavorite(mShow);
+
+
 
         configureToolbar();
         configureViewPager();

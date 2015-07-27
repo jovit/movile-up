@@ -327,6 +327,11 @@
         <item name="android:textColor">@color/default_textColor_fourth</item>
     </style>
 
+    <style name="AppTheme.ShowDetails.Favorite">
+        <item name="android:layout_marginRight">@dimen/default_spacing_large</item>
+        <item name="android:layout_marginBottom">@dimen/default_spacing_large</item>
+    </style>
+
     <style name="AppTheme.Shows"/>
 
     <style name="AppTheme.Shows.Grid">
