@@ -2,7 +2,6 @@ package com.movile.up.seriestracker.presenter;
 
 import android.content.Context;
 
-import com.movile.up.seriestracker.listener.EpisodeDetailsCallback;
 import com.movile.up.seriestracker.listener.SeasonDetailsCallback;
 import com.movile.up.seriestracker.listener.SeasonEpisodesCallback;
 import com.movile.up.seriestracker.model.Episode;

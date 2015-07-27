@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.model.converter.ModelConverter;
 import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.model.converter.ModelConverter;
 
 import java.io.IOException;
 import java.io.InputStream;

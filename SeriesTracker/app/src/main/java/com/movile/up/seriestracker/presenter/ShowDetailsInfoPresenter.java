@@ -6,7 +6,6 @@ import com.movile.up.seriestracker.listener.ShowDetailsCallback;
 import com.movile.up.seriestracker.model.Show;
 import com.movile.up.seriestracker.remote.ShowRemoteServiceRetrofit;
 import com.movile.up.seriestracker.view.ShowDetailsInfoView;
-import com.movile.up.seriestracker.view.ShowDetailsView;
 
 /**
  * Created by android on 7/22/15.

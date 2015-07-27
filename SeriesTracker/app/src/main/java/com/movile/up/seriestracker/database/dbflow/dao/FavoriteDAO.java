@@ -1,6 +1,5 @@
 package com.movile.up.seriestracker.database.dbflow.dao;
 
-import android.content.Context;
 import android.database.Cursor;
 
 import com.movile.up.seriestracker.database.dbflow.entity.FavoriteEntity;

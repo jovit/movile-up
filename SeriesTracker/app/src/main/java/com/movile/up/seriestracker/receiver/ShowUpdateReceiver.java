@@ -8,13 +8,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4 .app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activity.ShowDetailsActivity;
-import com.movile.up.seriestracker.activity.ShowsActivity;
-import com.movile.up.seriestracker.model.Show;
 import com.movile.up.seriestracker.model.ShowUpdate;
 
 /**

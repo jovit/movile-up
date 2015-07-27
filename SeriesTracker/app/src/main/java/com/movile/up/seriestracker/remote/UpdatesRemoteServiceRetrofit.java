@@ -5,7 +5,6 @@ import android.content.Context;
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.model.ShowUpdate;
 
-
 import retrofit.RestAdapter;
 
 /**

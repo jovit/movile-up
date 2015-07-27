@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.movile.up.seriestracker.listener.SeasonsCallback;
 import com.movile.up.seriestracker.model.Season;
-import com.movile.up.seriestracker.remote.SeasonRemoteService;
 import com.movile.up.seriestracker.remote.SeasonRemoteServiceRetrofit;
 import com.movile.up.seriestracker.view.ShowDetailsSeasonsView;
 

@@ -10,7 +10,6 @@ import com.movile.up.seriestracker.listener.ShowDetailsCallback;
 import com.movile.up.seriestracker.loader.callback.FavoriteLoaderCallback;
 import com.movile.up.seriestracker.model.Favorite;
 import com.movile.up.seriestracker.model.Show;
-import com.movile.up.seriestracker.remote.EpisodeRemoteServiceRetrofit;
 import com.movile.up.seriestracker.remote.ShowRemoteServiceRetrofit;
 import com.movile.up.seriestracker.view.ShowDetailsView;
 
