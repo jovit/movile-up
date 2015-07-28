@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.GridView;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.activity.base.BaseNavigationDrawerActivity;
 import com.movile.up.seriestracker.adapter.ShowsGridAdapter;
 import com.movile.up.seriestracker.listener.OnShowClickListener;
 import com.movile.up.seriestracker.model.Show;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * Created by android on 7/23/15.
  */
-public class ShowsActivity extends AppCompatActivity implements ShowsView, OnShowClickListener{
+public class ShowsActivity extends BaseNavigationDrawerActivity implements ShowsView, OnShowClickListener{
     private ShowsPresenter mPresenter;
     private ShowsGridAdapter mAdapter;
 
@@ -27,6 +28,10 @@ public class ShowsActivity extends AppCompatActivity implements ShowsView, OnSho
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shows_activity);
+
+        showLoading();
+
+        configureNavigation();
         configureShowsGrid();
 
         mPresenter = new ShowsPresenter(this, this);
@@ -49,5 +54,6 @@ public class ShowsActivity extends AppCompatActivity implements ShowsView, OnSho
     @Override
     public void displayShows(List<Show> shows) {
         mAdapter.updateShows(shows);
+        hideLoading();
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/favorite_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="48dp">
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="match_parent"
+        style="@style/AppTheme.Favorites.Item.Heart"/>
+
+    <TextView
+        android:id="@+id/favorite_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Teste de Texto"
+        style="@style/AppTheme.Favorites.Item.Title"/>
+
+</LinearLayout>

@@ -20,4 +20,8 @@
 
     <string name="show_genres">GENRES</string>
     <string name="show_details">DETAILS</string>
+
+    <!-- Favorite Fragment -->
+    <string name="favorite_fragment_favorited_shows">Favorited Shows</string>
+    <string name="favorite_fragment_no_show_found">No show found</string>
 </resources>

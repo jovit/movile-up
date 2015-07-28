@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        style="@style/AppTheme.Favorites.Header.Background">
+        <ImageView
+            android:id="@+id/favorite_status"
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            style="@style/AppTheme.Favorites.Header.Image"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favorite_fragment_favorited_shows"
+            android:layout_alignParentBottom="true"
+            style="@style/AppTheme.Favorites.Header.FavoritedShows"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/favorite_list"
+            android:layout_marginTop="@dimen/default_spacing_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/favorite_list_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favorite_fragment_no_show_found"
+            style="@style/AppTheme.Favorites.Item.NoShow"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

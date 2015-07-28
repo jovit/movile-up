@@ -36,4 +36,7 @@
     <color name="favorite_color_on">@color/default_color_second</color>
     <color name="favorite_color_off">@color/default_color_third</color>
 
+    <!-- Base Navigation Drawer -->
+    <color name="base_navigation_drawer_content_background">@color/default_background_second</color>
+
 </resources>

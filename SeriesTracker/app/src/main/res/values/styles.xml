@@ -350,4 +350,67 @@
         <item name="android:src">@drawable/show_item_placeholder</item>
     </style>
 
+    <!-- Base Navigation -->
+
+    <style name="AppTheme.Base.Navigation.Drawer"/>
+
+    <style name="AppTheme.Base.Navigation.Drawer.Content">
+        <item name="android:layout_width">@dimen/base_navigation_drawer_content_width</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:background">@color/base_navigation_drawer_content_background</item>
+    </style>
+
+    <!-- Favorite Fragment -->
+
+    <style name="AppTheme.Favorites"/>
+
+    <style name="AppTheme.Favorites.Item"/>
+
+    <style name="AppTheme.Favorites.Item.NoShow">
+        <item name="android:textSize">@dimen/default_textSize_medium</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_large</item>
+        <item name="android:layout_marginTop">23dp</item>
+        <item name="android:textColor">@color/default_textColor_fifth</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="AppTheme.Favorites.Item.Container">
+        <item name="android:layout_marginTop">@dimen/default_spacing_large</item>
+        <item name="android:layout_marginBottom">@dimen/default_spacing_large</item>
+    </style>
+
+    <style name="AppTheme.Favorites.Item.Heart">
+        <item name="android:src">@drawable/favorite_item_icon_heart</item>
+        <item name="android:layout_marginLeft">27dp</item>
+        <item name="android:layout_marginRight">27dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="AppTheme.Favorites.Item.Title">
+        <item name="android:textSize">@dimen/default_textSize_medium</item>
+        <item name="android:textColor">@color/default_textColor_fifth</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="AppTheme.Favorites.Header"/>
+
+    <style name="AppTheme.Favorites.Header.Background">
+        <item name="android:background">@color/default_background_fourth</item>
+    </style>
+
+    <style name="AppTheme.Favorites.Header.FavoritedShows">
+        <item name="android:textSize">@dimen/default_textSize_medium</item>
+        <item name="android:textColor">@color/default_textColor_first</item>
+        <item name="android:layout_marginBottom">14dp</item>
+        <item name="android:layout_marginLeft">@dimen/default_spacing_large</item>
+    </style>
+
+    <style name="AppTheme.Favorites.Header.Image">
+        <item name="android:src">@drawable/favorites_header_tv_happy</item>
+        <item name="android:layout_marginBottom">64dp</item>
+        <item name="android:layout_marginLeft">109dp</item>
+    </style>
+
 </resources>
