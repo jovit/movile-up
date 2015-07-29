@@ -36,7 +36,9 @@ public class BaseNavigationDrawerActivity extends BaseLoadingActivity {
     }
 
     private void configureNavigationDrawerContent() {
-        getFragmentManager().beginTransaction().add(R.id.base_navigation_drawer_content, new FavoritesFragment(), "favorites").commit();
+        if (getFragmentManager().findFragmentByTag("favorites") == null) {
+            getFragmentManager().beginTransaction().add(R.id.base_navigation_drawer_content, new FavoritesFragment(), "favorites").commit();
+        }
     }
 
     private void configureNavigationDrawer() {
