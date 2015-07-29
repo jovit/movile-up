@@ -12,9 +12,6 @@ import com.movile.up.seriestracker.view.SeasonEpisodesView;
 
 import java.util.List;
 
-/**
- * Created by android on 7/20/15.
- */
 public class SeasonEpisodesPresenter implements SeasonEpisodesCallback, SeasonDetailsCallback{
     private SeasonEpisodesView mView;
     private Context mContext;

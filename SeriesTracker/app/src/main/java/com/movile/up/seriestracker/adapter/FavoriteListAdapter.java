@@ -27,7 +27,7 @@ public class FavoriteListAdapter extends CursorAdapter {
     }
 
     public void setCursor(Cursor c){
-        swapCursor(c);
+        changeCursor(c);
     }
 
     @Override

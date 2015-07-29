@@ -1,9 +1,14 @@
 package com.movile.up.seriestracker.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -61,18 +66,42 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
     }
 
     public void onFavoriteClick(){
-        if(!favoriteOn){
-            mFavoriteView.setImageResource(R.drawable.show_details_favorite_on);
-            mFavoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.favorite_color_on));
-            if(getSupportActionBar() != null && getSupportActionBar().getTitle() != null)
-               mPresenter.addFavorite(new Favorite(mShow,getSupportActionBar().getTitle().toString()));
-            favoriteOn = true;
-        }else{
-            mFavoriteView.setImageResource(R.drawable.show_details_favorite_off);
-            mFavoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.favorite_color_off));
-            mPresenter.removeFavorite(mShow);
-            favoriteOn = false;
-        }
+        ObjectAnimator animationScaleX = ObjectAnimator.ofFloat(mFavoriteView, "scaleX", 1, 0);
+        ObjectAnimator animationScaleY = ObjectAnimator.ofFloat(mFavoriteView, "scaleY", 1, 0.1f);
+        ObjectAnimator animationRotation = ObjectAnimator.ofFloat(mFavoriteView, "rotation", 1, 180);
+        AnimatorSet set = new AnimatorSet();
+        set.playSequentially(ObjectAnimator.ofFloat(mFavoriteView, "translationY", 0, 200));
+        set.setDuration(150);
+        set.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if(!favoriteOn){
+                    mFavoriteView.setImageResource(R.drawable.show_details_favorite_on);
+                    mFavoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.favorite_color_on));
+
+                    if(getSupportActionBar() != null && getSupportActionBar().getTitle() != null)
+                        mPresenter.addFavorite(new Favorite(mShow,getSupportActionBar().getTitle().toString()));
+
+                    favoriteOn = true;
+                }else{
+                        mFavoriteView.setImageResource(R.drawable.show_details_favorite_off);
+                        mFavoriteView.setBackgroundTintList(getResources().getColorStateList(R.color.favorite_color_off));
+                        mPresenter.removeFavorite(mShow);
+                        favoriteOn = false;
+                }
+
+                ObjectAnimator animationFall = ObjectAnimator.ofFloat(mFavoriteView, "translationY", -600, 0);
+                animationFall.setInterpolator(new BounceInterpolator());
+
+                AnimatorSet set = new AnimatorSet();
+                set.playSequentially(animationFall);
+                set.setDuration(500);
+                set.start();
+            }
+        });
+        set.start();
+
+
     }
 
     private void getIntentExtraInformation(){

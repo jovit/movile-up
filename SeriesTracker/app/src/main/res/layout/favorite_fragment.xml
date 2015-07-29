@@ -37,6 +37,4 @@
             android:text="@string/favorite_fragment_no_show_found"
             style="@style/AppTheme.Favorites.Item.NoShow"/>
     </RelativeLayout>
-
-
 </LinearLayout>
