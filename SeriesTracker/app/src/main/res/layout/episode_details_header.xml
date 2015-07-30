@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/episode_details_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="248dp">
+        <ImageView
+            android:id="@+id/episode_details_screenshot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/AppTheme.EpisodeDetails.Highlight"
+            android:src="@drawable/highlight_placeholder"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/AppTheme.EpisodeDetails.Overlay"/>
+        <TextView
+            android:id="@+id/episode_details_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            style="@style/AppTheme.EpisodeDetails.Title"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/AppTheme.EpisodeDetails.Information.Container">
+
+        <android.support.v7.widget.CardView
+            style="@style/AppTheme.EpisodeDetails.Information.Time.Container"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            app:cardPreventCornerOverlap="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/default_spacing_large">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/AppTheme.EpisodeDetails.Information.Time.Clock"/>
+                <TextView
+                    android:id="@+id/episode_details_time"
+                    style="@style/AppTheme.EpisodeDetails.Information.Time.Date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            style="@style/AppTheme.EpisodeDetails.Information.Summary.Container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/default_spacing_large"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="@string/episode_details_summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AppTheme.EpisodeDetails.Information.Summary.Title" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    style="@style/AppTheme.EpisodeDetails.Information.Summary.Separator"/>
+                <TextView
+                    android:id="@+id/episode_details_summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/AppTheme.EpisodeDetails.Information.Summary.Body"
+                    />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</LinearLayout>

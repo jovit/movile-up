@@ -4,8 +4,4 @@
     <declare-styleable name="RoundedFrameLayout">
         <attr name="rfl_cornerRadius" format="dimension" />
     </declare-styleable>
-
-    <declare-styleable name="RoundedImageView">
-    </declare-styleable>
-
 </resources>

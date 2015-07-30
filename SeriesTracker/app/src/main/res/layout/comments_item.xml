@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
-    <com.movile.up.seriestracker.custom.RoundedImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/season_item_placeholder"/>
+    android:layout_height="wrap_content"
+    android:background="#FFF">
+    <TextView
+        android:id="@+id/comment_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/default_textSize_medium"
+        android:textColor="@color/default_textColor_fourth"
+        android:layout_marginTop="@dimen/default_spacing_large"
+        android:layout_marginLeft="@dimen/default_spacing_large"/>
+    <TextView
+        android:id="@+id/comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/comment_username"
+        android:textSize="@dimen/default_textSize_small"
+        android:textColor="@color/default_textColor_fifth"
+        android:layout_toRightOf="@id/comment_username"
+        android:layout_marginTop="@dimen/default_spacing_medium"
+        android:layout_marginLeft="@dimen/default_spacing_large"
+        android:layout_marginRight="@dimen/default_spacing_medium"/>
 
-</LinearLayout>
+</RelativeLayout>
