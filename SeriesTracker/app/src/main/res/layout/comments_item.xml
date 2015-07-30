@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/default_textSize_medium"
-        android:textColor="@color/default_textColor_fourth"
+        android:textColor="@color/theme_colorPrimaryDark"
         android:layout_marginTop="@dimen/default_spacing_large"
         android:layout_marginLeft="@dimen/default_spacing_large"/>
     <TextView
@@ -19,9 +19,9 @@
         android:layout_below="@id/comment_username"
         android:textSize="@dimen/default_textSize_small"
         android:textColor="@color/default_textColor_fifth"
-        android:layout_toRightOf="@id/comment_username"
         android:layout_marginTop="@dimen/default_spacing_medium"
-        android:layout_marginLeft="@dimen/default_spacing_large"
-        android:layout_marginRight="@dimen/default_spacing_medium"/>
+        android:layout_marginLeft = "50dp"
+        android:layout_marginRight="@dimen/default_spacing_medium"
+        android:layout_marginBottom="@dimen/default_spacing_medium"/>
 
 </RelativeLayout>

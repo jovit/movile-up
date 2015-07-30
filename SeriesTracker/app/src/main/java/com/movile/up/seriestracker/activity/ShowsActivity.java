@@ -2,7 +2,11 @@ package com.movile.up.seriestracker.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.activity.base.BaseNavigationDrawerActivity;
@@ -20,7 +24,7 @@ import java.util.List;
 public class ShowsActivity extends BaseNavigationDrawerActivity implements ShowsView, OnShowClickListener{
     private ShowsPresenter mPresenter;
     private ShowsGridAdapter mAdapter;
-
+    private String searchQuery;
 
 
     @Override
@@ -34,13 +38,46 @@ public class ShowsActivity extends BaseNavigationDrawerActivity implements Shows
         configureShowsGrid();
 
         mPresenter = new ShowsPresenter(this, this);
-        mPresenter.loadPopularShows();
+        if(savedInstanceState != null){
+            searchShow((String) savedInstanceState.get("search-value"));
+        }else{
+            searchShow("");
+        }
+
+
+        ((EditText)findViewById(R.id.show_search)).setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                searchShow(((EditText) findViewById(R.id.show_search)).getText().toString());
+                return true;
+            }
+        });
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("search-value", searchQuery );
+        super.onSaveInstanceState(outState);
+    }
+
+
+
+    private void searchShow(String show){
+        searchQuery = show;
+        show = show.trim();
+        if(show.equals("")){
+            mPresenter.loadPopularShows();
+        }else {
+            mPresenter.searchShow(show);
+        }
     }
 
     public void configureShowsGrid(){
         GridView showsGrid = (GridView) findViewById(R.id.shows_grid);
         mAdapter = new ShowsGridAdapter(this, this);
         showsGrid.setAdapter(mAdapter);
+        showsGrid.setEmptyView(findViewById(R.id.show_not_found));
     }
 
     @Override

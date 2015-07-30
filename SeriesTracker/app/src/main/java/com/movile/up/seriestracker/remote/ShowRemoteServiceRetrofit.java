@@ -5,15 +5,19 @@ import android.util.Log;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.listener.PopularShowsCallback;
+import com.movile.up.seriestracker.listener.SearchShowCallback;
 import com.movile.up.seriestracker.listener.ShowDetailsCallback;
+import com.movile.up.seriestracker.model.SearchedShow;
 import com.movile.up.seriestracker.model.Show;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.http.Query;
 
 /**
  * Created by android on 7/22/15.
@@ -53,6 +57,28 @@ public class ShowRemoteServiceRetrofit {
             @Override
             public void failure(RetrofitError error) {
                 Log.e(TAG, "Error fetching popular shows", error.getCause());
+            }
+        });
+    }
+
+    public void searchShow(Context mContext,String query, final SearchShowCallback mListener){
+        RestAdapter mAdapter = new RestAdapter.Builder().setEndpoint(mContext.getString(R.string.api_url_base)).build();
+
+        ShowRemoteService service = mAdapter.create(ShowRemoteService.class);
+
+        service.searchShow( query, new Callback<List<SearchedShow>>() {
+            @Override
+            public void success(List<SearchedShow> shows, Response response) {
+                ArrayList<Show> showsList = new ArrayList<Show>();
+                for(SearchedShow s : shows){
+                    showsList.add(s.show());
+                }
+                mListener.onSearchShowSuccess(showsList);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.e(TAG, "Error fetching shows", error.getCause());
             }
         });
     }

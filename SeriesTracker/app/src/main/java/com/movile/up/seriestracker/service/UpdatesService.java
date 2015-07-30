@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.movile.up.seriestracker.model.ShowUpdate;
 import com.movile.up.seriestracker.receiver.ShowUpdateReceiver;
@@ -13,6 +14,7 @@ import com.movile.up.seriestracker.remote.UpdatesRemoteServiceRetrofit;
  * Created by android on 7/23/15.
  */
 public class UpdatesService extends IntentService{
+    private static final String TAG = UpdatesService.class.getSimpleName();
     public UpdatesService(String name) {
         super(name);
     }
@@ -34,7 +36,7 @@ public class UpdatesService extends IntentService{
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("last", update.date());
-            editor.commit();
+            editor.apply();
         }
     }
 }
